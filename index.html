@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Golfbold statistik</title>
+
+    <link rel="stylesheet" href="index.css">
+</head>
+
+
+<body>
+
+    <!-- FORSIDE -->
+    <section id="forside" class="side aktiv">
+
+        <h1>
+            Hvilken farve golfbold vandt runden?
+        </h1>
+
+
+        <div class="bolde">
+
+            <button class="bold-knap" data-color="hvid">
+                <span>Hvid</span>
+                <div class="bold hvid"></div>
+            </button>
+
+
+            <button class="bold-knap" data-color="sort">
+                <span>Sort</span>
+                <div class="bold sort"></div>
+            </button>
+
+
+            <button class="bold-knap" data-color="rod">
+                <span>Rød</span>
+                <div class="bold rod"></div>
+            </button>
+
+
+            <button class="bold-knap" data-color="gron">
+                <span>Grøn</span>
+                <div class="bold gron"></div>
+            </button>
+
+
+            <button class="bold-knap" data-color="gul">
+                <span>Gul</span>
+                <div class="bold gul"></div>
+            </button>
+
+
+            <button class="bold-knap" data-color="lilla">
+                <span>Lilla</span>
+                <div class="bold lilla"></div>
+            </button>
+
+
+            <button class="bold-knap" data-color="pink">
+                <span>Pink</span>
+                <div class="bold pink"></div>
+            </button>
+
+
+            <button class="bold-knap" data-color="orange">
+                <span>Orange</span>
+                <div class="bold orange"></div>
+            </button>
+
+        </div>
+
+
+        <!-- Statistik-knap -->
+        <button id="statistikKnap" class="hjørne-knap">
+            Statistik
+        </button>
+
+    </section>
+
+
+
+    <!-- STATISTIKSIDE -->
+    <section id="statistik" class="side">
+
+        <h1>
+            Samlet statistik
+        </h1>
+
+
+        <p class="runder">
+
+            Runder i alt:
+
+            <strong id="runderIAlt">
+                0
+            </strong>
+
+        </p>
+
+
+        <div id="diagram" class="diagram"></div>
+
+
+        <!-- Tilbage -->
+        <button id="tilbageKnap" class="tilbage-knap">
+            ← Tilbage
+        </button>
+
+
+        <!-- Nulstil -->
+        <button id="nulstilKnap" class="nulstil-knap">
+            Nulstil statistik
+        </button>
+
+    </section>
+
+
+    <script src="index.js"></script>
+
+</body>
+
+</html>

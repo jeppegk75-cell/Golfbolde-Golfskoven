@@ -1,0 +1,554 @@
+/* -------------------------
+   GENERELT
+------------------------- */
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    margin: 0;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background-color: #123b2b;
+
+    color: white;
+}
+
+
+/* -------------------------
+   SIDER
+------------------------- */
+
+.side {
+    display: none;
+
+    position: relative;
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    padding: 50px;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+}
+
+
+.side.aktiv {
+    display: flex;
+}
+
+
+
+/* -------------------------
+   OVERSKRIFTER
+------------------------- */
+
+h1 {
+    margin-top: 0;
+
+    margin-bottom: 80px;
+
+    font-size: 42px;
+
+    text-align: center;
+}
+
+
+
+/* -------------------------
+   FORSIDE
+------------------------- */
+
+.bolde {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 32px;
+}
+
+
+
+/* Knap omkring bolden */
+
+.bold-knap {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 5px;
+
+    border: none;
+
+    background: none;
+
+    color: white;
+
+    cursor: pointer;
+
+    touch-action: manipulation;
+}
+
+
+.bold-knap span {
+    font-size: 18px;
+
+    font-weight: bold;
+}
+
+
+
+/* -------------------------
+   SELVE GOLFBOLDEN
+------------------------- */
+
+.bold {
+    position: relative;
+
+    width: 95px;
+
+    height: 95px;
+
+    border-radius: 50%;
+
+    border: 2px solid rgba(0, 0, 0, 0.35);
+
+    overflow: hidden;
+
+    box-shadow:
+        inset -12px -12px 18px rgba(0, 0, 0, 0.20),
+        inset 10px 10px 18px rgba(255, 255, 255, 0.30),
+        0 5px 10px rgba(0, 0, 0, 0.25);
+}
+
+
+/* Golfboldens små fordybninger */
+
+.bold::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 50%;
+
+    background-image:
+
+        radial-gradient(
+            circle at 15px 15px,
+            rgba(0,0,0,0.25) 0px,
+            rgba(0,0,0,0.25) 3px,
+            transparent 4px
+        ),
+
+        radial-gradient(
+            circle at 45px 20px,
+            rgba(255,255,255,0.35) 0px,
+            rgba(255,255,255,0.35) 3px,
+            transparent 4px
+        ),
+
+        radial-gradient(
+            circle at 75px 15px,
+            rgba(0,0,0,0.20) 0px,
+            rgba(0,0,0,0.20) 3px,
+            transparent 4px
+        ),
+
+        radial-gradient(
+            circle at 28px 45px,
+            rgba(255,255,255,0.30) 0px,
+            rgba(255,255,255,0.30) 3px,
+            transparent 4px
+        ),
+
+        radial-gradient(
+            circle at 65px 48px,
+            rgba(0,0,0,0.22) 0px,
+            rgba(0,0,0,0.22) 3px,
+            transparent 4px
+        ),
+
+        radial-gradient(
+            circle at 18px 75px,
+            rgba(0,0,0,0.20) 0px,
+            rgba(0,0,0,0.20) 3px,
+            transparent 4px
+        ),
+
+        radial-gradient(
+            circle at 50px 75px,
+            rgba(255,255,255,0.30) 0px,
+            rgba(255,255,255,0.30) 3px,
+            transparent 4px
+        ),
+
+        radial-gradient(
+            circle at 80px 72px,
+            rgba(0,0,0,0.20) 0px,
+            rgba(0,0,0,0.20) 3px,
+            transparent 4px
+        );
+}
+
+
+
+/* Effekt ved tryk */
+
+.bold-knap:active .bold {
+    transform: scale(0.88);
+}
+
+
+
+/* -------------------------
+   BOLDFARVER
+------------------------- */
+
+.hvid {
+    background-color: white;
+}
+
+
+.sort {
+    background-color: #222222;
+}
+
+
+.rod {
+    background-color: #e53935;
+}
+
+
+.gron {
+    background-color: #32a852;
+}
+
+
+.gul {
+    background-color: #ffd633;
+}
+
+
+.lilla {
+    background-color: #8e63ce;
+}
+
+
+.pink {
+    background-color: #f38bb6;
+}
+
+
+.orange {
+    background-color: #f28c28;
+}
+
+
+
+/* -------------------------
+   STATISTIK-KNAP PÅ FORSIDE
+------------------------- */
+
+.hjørne-knap {
+    position: absolute;
+
+    right: 25px;
+
+    bottom: 25px;
+
+    padding: 10px 18px;
+
+    border: 1px solid rgba(255,255,255,0.6);
+
+    border-radius: 8px;
+
+    background-color: rgba(255,255,255,0.12);
+
+    color: white;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    touch-action: manipulation;
+}
+
+
+.hjørne-knap:active {
+    background-color: rgba(255,255,255,0.30);
+}
+
+
+
+/* -------------------------
+   STATISTIKSIDE
+------------------------- */
+
+#statistik h1 {
+    margin-bottom: 15px;
+}
+
+
+.runder {
+    margin-top: 0;
+
+    margin-bottom: 55px;
+
+    font-size: 22px;
+}
+
+
+.runder strong {
+    font-size: 30px;
+}
+
+
+
+/* -------------------------
+   DIAGRAM
+------------------------- */
+
+.diagram {
+    width: 90%;
+
+    max-width: 1100px;
+
+    height: 400px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-end;
+
+    gap: 25px;
+
+    border-bottom: 3px solid white;
+}
+
+
+
+.sojle-område {
+    width: 100px;
+
+    height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-end;
+
+    align-items: center;
+}
+
+
+
+/* Lille bold over søjlen */
+
+.lille-bold {
+    width: 36px;
+
+    height: 36px;
+
+    border-radius: 50%;
+
+    border: 2px solid rgba(0,0,0,0.4);
+
+    margin-bottom: 8px;
+}
+
+
+
+/* Antal sejre */
+
+.antal {
+    margin-bottom: 7px;
+
+    font-size: 20px;
+
+    font-weight: bold;
+}
+
+
+
+/* Søjlen */
+
+.sojle {
+    width: 60px;
+
+    min-height: 3px;
+
+    border: 2px solid rgba(0,0,0,0.4);
+
+    border-bottom: none;
+}
+
+
+
+/* Farvenavn */
+
+.navn {
+    margin-top: 10px;
+
+    font-weight: bold;
+}
+
+
+
+/* Procent */
+
+.procent {
+    margin-top: 3px;
+
+    margin-bottom: 10px;
+
+    font-size: 15px;
+}
+
+
+
+/* -------------------------
+   TILBAGE-KNAP
+------------------------- */
+
+.tilbage-knap {
+    position: absolute;
+
+    left: 25px;
+
+    bottom: 25px;
+
+    padding: 10px 18px;
+
+    border: 1px solid rgba(255,255,255,0.6);
+
+    border-radius: 8px;
+
+    background-color: rgba(255,255,255,0.12);
+
+    color: white;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    touch-action: manipulation;
+}
+
+
+.tilbage-knap:active {
+    background-color: rgba(255,255,255,0.30);
+}
+
+
+
+/* -------------------------
+   NULSTIL-KNAP
+------------------------- */
+
+.nulstil-knap {
+    display: none;
+
+    position: absolute;
+
+    right: 25px;
+
+    bottom: 25px;
+
+    padding: 10px 18px;
+
+    border: 1px solid #ffb3b3;
+
+    border-radius: 8px;
+
+    background-color: rgba(150, 0, 0, 0.35);
+
+    color: white;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    touch-action: manipulation;
+}
+
+
+/* Vises kun når Statistik
+   åbnes manuelt */
+
+.nulstil-knap.vis {
+    display: block;
+}
+
+
+.nulstil-knap:active {
+    background-color: rgba(200, 0, 0, 0.6);
+
+    transform: scale(0.95);
+}
+
+
+
+/* -------------------------
+   TABLET
+------------------------- */
+
+@media (max-width: 1000px) {
+
+    .bolde {
+        display: grid;
+
+        grid-template-columns: repeat(4, 1fr);
+
+        gap: 40px 45px;
+    }
+
+
+    .bold {
+        width: 105px;
+
+        height: 105px;
+    }
+
+
+    h1 {
+        font-size: 36px;
+
+        margin-bottom: 60px;
+    }
+
+
+    .diagram {
+        gap: 10px;
+    }
+
+
+    .sojle-område {
+        width: 75px;
+    }
+
+
+    .sojle {
+        width: 48px;
+    }
+
+}
