@@ -1,15 +1,24 @@
-/* -------------------------
+/* =================================
    GENERELT
-------------------------- */
+================================= */
 
 * {
     box-sizing: border-box;
 }
 
 
+html,
 body {
     margin: 0;
 
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+}
+
+
+body {
     font-family: Arial, Helvetica, sans-serif;
 
     background-color: #123b2b;
@@ -18,28 +27,20 @@ body {
 }
 
 
-/* -------------------------
+
+/* =================================
    SIDER
-------------------------- */
+================================= */
 
 .side {
     display: none;
 
     position: relative;
 
-    width: 100%;
+    width: 100vw;
+    height: 100vh;
 
-    min-height: 100vh;
-
-    padding: 50px;
-
-    flex-direction: column;
-
-    justify-content: center;
-
-    align-items: center;
-
-    text-align: center;
+    overflow: hidden;
 }
 
 
@@ -49,96 +50,169 @@ body {
 
 
 
-/* -------------------------
-   OVERSKRIFTER
-------------------------- */
+/* =================================
+   FORSIDE
+================================= */
 
-h1 {
-    margin-top: 0;
+#forside {
+    justify-content: center;
 
-    margin-bottom: 80px;
+    align-items: center;
+}
 
-    font-size: 42px;
+
+.forside-indhold {
+    width: 100%;
+
+    padding:
+        clamp(20px, 4vh, 40px)
+        clamp(20px, 4vw, 60px);
 
     text-align: center;
 }
 
 
 
-/* -------------------------
-   FORSIDE
-------------------------- */
+/* Overskrift */
+
+h1 {
+    margin: 0 0 clamp(35px, 8vh, 70px);
+
+    font-size: clamp(
+        28px,
+        3.4vw,
+        46px
+    );
+
+    line-height: 1.15;
+
+    text-align: center;
+}
+
+
+
+/* =================================
+   BOLDRÆKKE
+================================= */
 
 .bolde {
+    width: 100%;
+
+    max-width: 1250px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(8, 1fr);
+
+    align-items: center;
+
+    justify-items: center;
+
+    gap: clamp(
+        8px,
+        1.8vw,
+        28px
+    );
+}
+
+
+
+/* =================================
+   BOLDKNAPPER
+================================= */
+
+.bold-knap {
+    width: 100%;
+
     display: flex;
+
+    flex-direction: column;
 
     justify-content: center;
 
     align-items: center;
 
-    gap: 32px;
-}
+    gap: clamp(
+        8px,
+        1.5vh,
+        14px
+    );
 
-
-
-/* Knap omkring bolden */
-
-.bold-knap {
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    gap: 15px;
-
-    padding: 5px;
+    padding: 4px;
 
     border: none;
 
-    background: none;
+    background: transparent;
 
     color: white;
 
     cursor: pointer;
 
     touch-action: manipulation;
+
+    -webkit-tap-highlight-color:
+        transparent;
 }
 
 
-.bold-knap span {
-    font-size: 18px;
+.bold-navn {
+    font-size: clamp(
+        15px,
+        1.6vw,
+        20px
+    );
 
     font-weight: bold;
 }
 
 
 
-/* -------------------------
-   SELVE GOLFBOLDEN
-------------------------- */
+/* =================================
+   GOLFBOLD
+================================= */
 
 .bold {
     position: relative;
 
-    width: 95px;
+    width: clamp(
+        65px,
+        8vw,
+        105px
+    );
 
-    height: 95px;
+    aspect-ratio: 1 / 1;
 
     border-radius: 50%;
 
-    border: 2px solid rgba(0, 0, 0, 0.35);
-
     overflow: hidden;
 
+    border:
+        2px solid
+        rgba(0, 0, 0, 0.35);
+
     box-shadow:
-        inset -12px -12px 18px rgba(0, 0, 0, 0.20),
-        inset 10px 10px 18px rgba(255, 255, 255, 0.30),
-        0 5px 10px rgba(0, 0, 0, 0.25);
+
+        inset -12px -12px 18px
+        rgba(0, 0, 0, 0.20),
+
+        inset 10px 10px 18px
+        rgba(255, 255, 255, 0.30),
+
+        0 5px 10px
+        rgba(0, 0, 0, 0.25);
+
+    transition:
+        transform 0.12s ease;
 }
 
 
-/* Golfboldens små fordybninger */
+
+/* =================================
+   FORDYBNINGER I GOLFBOLD
+================================= */
 
 .bold::after {
     content: "";
@@ -152,65 +226,63 @@ h1 {
     background-image:
 
         radial-gradient(
-            circle at 15px 15px,
-            rgba(0,0,0,0.25) 0px,
-            rgba(0,0,0,0.25) 3px,
-            transparent 4px
+            circle at 15% 15%,
+            rgba(0, 0, 0, 0.22) 0 3%,
+            transparent 4%
         ),
 
         radial-gradient(
-            circle at 45px 20px,
-            rgba(255,255,255,0.35) 0px,
-            rgba(255,255,255,0.35) 3px,
-            transparent 4px
+            circle at 45% 18%,
+            rgba(255, 255, 255, 0.35) 0 3%,
+            transparent 4%
         ),
 
         radial-gradient(
-            circle at 75px 15px,
-            rgba(0,0,0,0.20) 0px,
-            rgba(0,0,0,0.20) 3px,
-            transparent 4px
+            circle at 75% 15%,
+            rgba(0, 0, 0, 0.20) 0 3%,
+            transparent 4%
         ),
 
         radial-gradient(
-            circle at 28px 45px,
-            rgba(255,255,255,0.30) 0px,
-            rgba(255,255,255,0.30) 3px,
-            transparent 4px
+            circle at 28% 45%,
+            rgba(255, 255, 255, 0.30) 0 3%,
+            transparent 4%
         ),
 
         radial-gradient(
-            circle at 65px 48px,
-            rgba(0,0,0,0.22) 0px,
-            rgba(0,0,0,0.22) 3px,
-            transparent 4px
+            circle at 62% 46%,
+            rgba(0, 0, 0, 0.22) 0 3%,
+            transparent 4%
         ),
 
         radial-gradient(
-            circle at 18px 75px,
-            rgba(0,0,0,0.20) 0px,
-            rgba(0,0,0,0.20) 3px,
-            transparent 4px
+            circle at 85% 42%,
+            rgba(255, 255, 255, 0.30) 0 3%,
+            transparent 4%
         ),
 
         radial-gradient(
-            circle at 50px 75px,
-            rgba(255,255,255,0.30) 0px,
-            rgba(255,255,255,0.30) 3px,
-            transparent 4px
+            circle at 15% 72%,
+            rgba(0, 0, 0, 0.20) 0 3%,
+            transparent 4%
         ),
 
         radial-gradient(
-            circle at 80px 72px,
-            rgba(0,0,0,0.20) 0px,
-            rgba(0,0,0,0.20) 3px,
-            transparent 4px
+            circle at 48% 74%,
+            rgba(255, 255, 255, 0.30) 0 3%,
+            transparent 4%
+        ),
+
+        radial-gradient(
+            circle at 80% 75%,
+            rgba(0, 0, 0, 0.20) 0 3%,
+            transparent 4%
         );
 }
 
 
 
-/* Effekt ved tryk */
+/* Tryk-effekt */
 
 .bold-knap:active .bold {
     transform: scale(0.88);
@@ -218,17 +290,17 @@ h1 {
 
 
 
-/* -------------------------
+/* =================================
    BOLDFARVER
-------------------------- */
+================================= */
 
 .hvid {
-    background-color: white;
+    background-color: #ffffff;
 }
 
 
 .sort {
-    background-color: #222222;
+    background-color: #202020;
 }
 
 
@@ -263,24 +335,36 @@ h1 {
 
 
 
-/* -------------------------
-   STATISTIK-KNAP PÅ FORSIDE
-------------------------- */
+/* =================================
+   STATISTIKKNAP PÅ FORSIDE
+================================= */
 
 .hjørne-knap {
     position: absolute;
 
-    right: 25px;
+    right: clamp(
+        15px,
+        2.5vw,
+        30px
+    );
 
-    bottom: 25px;
+    bottom: clamp(
+        15px,
+        3vh,
+        30px
+    );
 
-    padding: 10px 18px;
+    padding:
+        10px 18px;
 
-    border: 1px solid rgba(255,255,255,0.6);
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.65);
 
     border-radius: 8px;
 
-    background-color: rgba(255,255,255,0.12);
+    background-color:
+        rgba(255, 255, 255, 0.12);
 
     color: white;
 
@@ -293,99 +377,199 @@ h1 {
 
 
 .hjørne-knap:active {
-    background-color: rgba(255,255,255,0.30);
+    background-color:
+        rgba(255, 255, 255, 0.30);
 }
 
 
 
-/* -------------------------
+/* =================================
    STATISTIKSIDE
-------------------------- */
+================================= */
 
-#statistik h1 {
-    margin-bottom: 15px;
-}
-
-
-.runder {
-    margin-top: 0;
-
-    margin-bottom: 55px;
-
-    font-size: 22px;
-}
-
-
-.runder strong {
-    font-size: 30px;
-}
-
-
-
-/* -------------------------
-   DIAGRAM
-------------------------- */
-
-.diagram {
-    width: 90%;
-
-    max-width: 1100px;
-
-    height: 400px;
-
-    display: flex;
-
+#statistik {
     justify-content: center;
 
-    align-items: flex-end;
-
-    gap: 25px;
-
-    border-bottom: 3px solid white;
+    align-items: center;
 }
 
 
-
-.sojle-område {
-    width: 100px;
+.statistik-indhold {
+    width: 100%;
 
     height: 100%;
+
+    padding:
+
+        clamp(20px, 3vh, 35px)
+
+        clamp(20px, 3vw, 45px)
+
+        clamp(55px, 8vh, 75px);
 
     display: flex;
 
     flex-direction: column;
-
-    justify-content: flex-end;
 
     align-items: center;
 }
 
 
 
-/* Lille bold over søjlen */
+/* Statistik overskrift */
 
-.lille-bold {
-    width: 36px;
+.statistik-overskrift {
+    margin: 0 0 5px;
 
-    height: 36px;
-
-    border-radius: 50%;
-
-    border: 2px solid rgba(0,0,0,0.4);
-
-    margin-bottom: 8px;
+    font-size: clamp(
+        26px,
+        3vw,
+        40px
+    );
 }
 
 
 
-/* Antal sejre */
+/* Runder i alt */
+
+.runder {
+    margin: 0 0 clamp(
+        15px,
+        2vh,
+        25px
+    );
+
+    font-size: clamp(
+        17px,
+        1.8vw,
+        22px
+    );
+}
+
+
+.runder strong {
+    font-size: clamp(
+        22px,
+        2.4vw,
+        30px
+    );
+}
+
+
+
+/* =================================
+   DIAGRAM
+================================= */
+
+.diagram {
+    width: 100%;
+
+    max-width: 1200px;
+
+    flex: 1;
+
+    min-height: 0;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(8, 1fr);
+
+    align-items: end;
+
+    justify-items: center;
+
+    gap: clamp(
+        7px,
+        1.5vw,
+        22px
+    );
+
+    padding:
+        clamp(25px, 4vh, 40px)
+        5px
+        0;
+
+    border-bottom:
+        3px solid white;
+}
+
+
+
+/* Én statistik-søjle */
+
+.sojle-område {
+    width: 100%;
+
+    height: 100%;
+
+    display: grid;
+
+    grid-template-rows:
+
+        40px
+        26px
+        1fr
+        24px
+        22px;
+
+    justify-items: center;
+
+    align-items: end;
+}
+
+
+
+/* Lille farvet bold */
+
+.lille-bold {
+    width: clamp(
+        25px,
+        3vw,
+        36px
+    );
+
+    aspect-ratio: 1 / 1;
+
+    border-radius: 50%;
+
+    border:
+        2px solid
+        rgba(0, 0, 0, 0.4);
+
+    align-self: center;
+}
+
+
+
+/* Tal */
 
 .antal {
-    margin-bottom: 7px;
-
-    font-size: 20px;
+    font-size: clamp(
+        15px,
+        1.6vw,
+        20px
+    );
 
     font-weight: bold;
+
+    align-self: center;
+}
+
+
+
+/* Søjle-container */
+
+.sojle-holder {
+    width: 100%;
+
+    height: 100%;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: center;
 }
 
 
@@ -393,23 +577,40 @@ h1 {
 /* Søjlen */
 
 .sojle {
-    width: 60px;
+    width: clamp(
+        32px,
+        5vw,
+        60px
+    );
+
+    height: var(--hojde);
 
     min-height: 3px;
 
-    border: 2px solid rgba(0,0,0,0.4);
+    border:
+        2px solid
+        rgba(0, 0, 0, 0.4);
 
     border-bottom: none;
+
+    transition:
+        height 0.3s ease;
 }
 
 
 
-/* Farvenavn */
+/* Navn */
 
 .navn {
-    margin-top: 10px;
+    font-size: clamp(
+        13px,
+        1.5vw,
+        17px
+    );
 
     font-weight: bold;
+
+    align-self: center;
 }
 
 
@@ -417,33 +618,47 @@ h1 {
 /* Procent */
 
 .procent {
-    margin-top: 3px;
+    font-size: clamp(
+        12px,
+        1.3vw,
+        15px
+    );
 
-    margin-bottom: 10px;
-
-    font-size: 15px;
+    align-self: center;
 }
 
 
 
-/* -------------------------
+/* =================================
    TILBAGE-KNAP
-------------------------- */
+================================= */
 
 .tilbage-knap {
     position: absolute;
 
-    left: 25px;
+    left: clamp(
+        15px,
+        2.5vw,
+        30px
+    );
 
-    bottom: 25px;
+    bottom: clamp(
+        15px,
+        2.5vh,
+        25px
+    );
 
-    padding: 10px 18px;
+    padding:
+        10px 18px;
 
-    border: 1px solid rgba(255,255,255,0.6);
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.65);
 
     border-radius: 8px;
 
-    background-color: rgba(255,255,255,0.12);
+    background-color:
+        rgba(255, 255, 255, 0.12);
 
     color: white;
 
@@ -455,32 +670,38 @@ h1 {
 }
 
 
-.tilbage-knap:active {
-    background-color: rgba(255,255,255,0.30);
-}
 
-
-
-/* -------------------------
+/* =================================
    NULSTIL-KNAP
-------------------------- */
+================================= */
 
 .nulstil-knap {
     display: none;
 
     position: absolute;
 
-    right: 25px;
+    right: clamp(
+        15px,
+        2.5vw,
+        30px
+    );
 
-    bottom: 25px;
+    bottom: clamp(
+        15px,
+        2.5vh,
+        25px
+    );
 
-    padding: 10px 18px;
+    padding:
+        10px 18px;
 
-    border: 1px solid #ffb3b3;
+    border:
+        1px solid #ffb3b3;
 
     border-radius: 8px;
 
-    background-color: rgba(150, 0, 0, 0.35);
+    background-color:
+        rgba(150, 0, 0, 0.40);
 
     color: white;
 
@@ -492,63 +713,142 @@ h1 {
 }
 
 
-/* Vises kun når Statistik
-   åbnes manuelt */
-
 .nulstil-knap.vis {
     display: block;
 }
 
 
-.nulstil-knap:active {
-    background-color: rgba(200, 0, 0, 0.6);
 
-    transform: scale(0.95);
-}
+/* =================================
+   MINDRE TABLETS / TELEFONER
+================================= */
 
-
-
-/* -------------------------
-   TABLET
-------------------------- */
-
-@media (max-width: 1000px) {
+@media (max-width: 850px) {
 
     .bolde {
-        display: grid;
-
-        grid-template-columns: repeat(4, 1fr);
-
-        gap: 40px 45px;
+        gap: 5px;
     }
 
 
     .bold {
-        width: 105px;
+        width: clamp(
+            52px,
+            9vw,
+            76px
+        );
+    }
 
-        height: 105px;
+
+    .bold-navn {
+        font-size: 13px;
+    }
+
+
+    .forside-indhold {
+        padding-left: 10px;
+
+        padding-right: 10px;
+    }
+
+}
+
+
+
+/* =================================
+   TABLET I LANDSCAPE
+   Dette er hoveddesignet
+================================= */
+
+@media
+    (orientation: landscape)
+    and (min-width: 900px) {
+
+    .forside-indhold {
+        padding-top: 25px;
+
+        padding-bottom: 55px;
     }
 
 
     h1 {
-        font-size: 36px;
-
-        margin-bottom: 60px;
+        margin-bottom:
+            clamp(
+                35px,
+                7vh,
+                60px
+            );
     }
 
 
-    .diagram {
-        gap: 10px;
+    .bold {
+        width:
+            clamp(
+                72px,
+                8vw,
+                100px
+            );
     }
 
 
-    .sojle-område {
-        width: 75px;
+    .statistik-indhold {
+        padding-top: 20px;
+    }
+
+}
+
+
+
+/* =================================
+   MEGET LAV LANDSCAPE-SKÆRM
+================================= */
+
+@media
+    (orientation: landscape)
+    and (max-height: 650px) {
+
+    h1 {
+        margin-bottom: 28px;
+
+        font-size:
+            clamp(
+                25px,
+                3vw,
+                36px
+            );
     }
 
 
-    .sojle {
-        width: 48px;
+    .bold {
+        width:
+            clamp(
+                60px,
+                7vw,
+                82px
+            );
+    }
+
+
+    .bold-navn {
+        font-size:
+            14px;
+    }
+
+
+    .forside-indhold {
+        padding-top: 15px;
+
+        padding-bottom: 40px;
+    }
+
+
+    .statistik-overskrift {
+        font-size:
+            28px;
+    }
+
+
+    .runder {
+        margin-bottom: 10px;
     }
 
 }
