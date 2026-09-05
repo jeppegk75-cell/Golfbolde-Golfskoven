@@ -9,13 +9,13 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Golfbold statistik</title>
+    <title>Golfbold Statistik</title>
 
     <link rel="stylesheet" href="index.css">
 </head>
 
-<body>
 
+<body>
 
     <!-- =========================
          FORSIDE
@@ -25,106 +25,135 @@
 
         <div class="forside-indhold">
 
+
+            <!-- Golfskoven logo -->
+
+            <img
+                src="logo.jpg"
+                alt="Golfskoven"
+                class="logo"
+            >
+
+
+            <!-- Overskrift -->
+
             <h1>
                 Hvilken farve golfbold vandt runden?
             </h1>
 
 
+
+            <!-- Golfbolde -->
+
             <div class="bolde">
 
 
-                <button class="bold-knap" data-color="hvid">
-
-                    <span class="bold-navn">
-                        Hvid
-                    </span>
+                <button
+                    class="bold-knap"
+                    data-color="hvid"
+                >
+                    <span>Hvid</span>
 
                     <div class="bold hvid"></div>
-
                 </button>
 
 
 
-                <button class="bold-knap" data-color="sort">
-
-                    <span class="bold-navn">
-                        Sort
-                    </span>
+                <button
+                    class="bold-knap"
+                    data-color="sort"
+                >
+                    <span>Sort</span>
 
                     <div class="bold sort"></div>
-
                 </button>
 
 
 
-                <button class="bold-knap" data-color="rod">
-
-                    <span class="bold-navn">
-                        Rød
-                    </span>
+                <button
+                    class="bold-knap"
+                    data-color="rod"
+                >
+                    <span>Rød</span>
 
                     <div class="bold rod"></div>
-
                 </button>
 
 
 
-                <button class="bold-knap" data-color="gron">
-
-                    <span class="bold-navn">
-                        Grøn
-                    </span>
+                <button
+                    class="bold-knap"
+                    data-color="gron"
+                >
+                    <span>Grøn</span>
 
                     <div class="bold gron"></div>
-
                 </button>
 
 
 
-                <button class="bold-knap" data-color="gul">
-
-                    <span class="bold-navn">
-                        Gul
-                    </span>
+                <button
+                    class="bold-knap"
+                    data-color="gul"
+                >
+                    <span>Gul</span>
 
                     <div class="bold gul"></div>
-
                 </button>
 
 
 
-                <button class="bold-knap" data-color="lilla">
-
-                    <span class="bold-navn">
-                        Lilla
-                    </span>
+                <button
+                    class="bold-knap"
+                    data-color="lilla"
+                >
+                    <span>Lilla</span>
 
                     <div class="bold lilla"></div>
-
                 </button>
 
 
 
-                <button class="bold-knap" data-color="pink">
-
-                    <span class="bold-navn">
-                        Pink
-                    </span>
+                <button
+                    class="bold-knap"
+                    data-color="pink"
+                >
+                    <span>Pink</span>
 
                     <div class="bold pink"></div>
-
                 </button>
 
 
 
-                <button class="bold-knap" data-color="orange">
-
-                    <span class="bold-navn">
-                        Orange
-                    </span>
+                <button
+                    class="bold-knap"
+                    data-color="orange"
+                >
+                    <span>Orange</span>
 
                     <div class="bold orange"></div>
+                </button>
 
+
+
+                <button
+                    class="bold-knap"
+                    data-color="lysbla"
+                >
+                    <span>Lys blå</span>
+
+                    <div class="bold lysbla"></div>
+                </button>
+
+
+
+                <button
+                    class="bold-knap"
+                    data-color="morkbla"
+                >
+                    <span>Mørk blå</span>
+
+                    <div class="bold morkbla"></div>
                 </button>
 
 
@@ -138,7 +167,7 @@
 
         <button
             id="statistikKnap"
-            class="hjørne-knap"
+            class="statistik-knap"
         >
             Statistik
         </button>
@@ -149,14 +178,15 @@
 
 
     <!-- =========================
-         STATISTIK
+         STATISTIKSIDE
     ========================== -->
 
     <section id="statistik" class="side">
 
         <div class="statistik-indhold">
 
-            <h1 class="statistik-overskrift">
+
+            <h1 class="statistik-titel">
                 Samlet statistik
             </h1>
 
@@ -172,11 +202,15 @@
             </p>
 
 
+
+            <!-- Søjlediagram -->
+
             <div
                 id="diagram"
                 class="diagram"
             >
             </div>
+
 
         </div>
 

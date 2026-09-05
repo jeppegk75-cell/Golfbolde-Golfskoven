@@ -1,8 +1,8 @@
-// =================================
-// STATISTIK
-// =================================
+// =========================================
+// STANDARD STATISTIK
+// =========================================
 
-let statistik = {
+const tomStatistik = {
 
     hvid: 0,
     sort: 0,
@@ -11,15 +11,23 @@ let statistik = {
     gul: 0,
     lilla: 0,
     pink: 0,
-    orange: 0
+    orange: 0,
+
+    lysbla: 0,
+    morkbla: 0
 
 };
 
 
 
-// =================================
+// =========================================
 // HENT GEMT STATISTIK
-// =================================
+// =========================================
+
+let statistik = {
+    ...tomStatistik
+};
+
 
 const gemtStatistik =
     localStorage.getItem(
@@ -29,18 +37,31 @@ const gemtStatistik =
 
 if (gemtStatistik) {
 
-    statistik =
+    const gamleTal =
         JSON.parse(
             gemtStatistik
         );
+
+
+    // Dette sikrer, at dine gamle 8 farver
+    // stadig beholder deres tal,
+    // mens de to nye starter på 0.
+
+    statistik = {
+
+        ...tomStatistik,
+
+        ...gamleTal
+
+    };
 
 }
 
 
 
-// =================================
-// FARVER
-// =================================
+// =========================================
+// DE 10 FARVER
+// =========================================
 
 const farver = [
 
@@ -50,55 +71,76 @@ const farver = [
         farve: "#ffffff"
     },
 
+
     {
         id: "sort",
         navn: "Sort",
         farve: "#202020"
     },
 
+
     {
         id: "rod",
         navn: "Rød",
-        farve: "#e53935"
+        farve: "#ef3838"
     },
+
 
     {
         id: "gron",
         navn: "Grøn",
-        farve: "#32a852"
+        farve: "#39b75a"
     },
+
 
     {
         id: "gul",
         navn: "Gul",
-        farve: "#ffd633"
+        farve: "#ffdb32"
     },
+
 
     {
         id: "lilla",
         navn: "Lilla",
-        farve: "#8e63ce"
+        farve: "#9366db"
     },
+
 
     {
         id: "pink",
         navn: "Pink",
-        farve: "#f38bb6"
+        farve: "#f386bc"
     },
+
 
     {
         id: "orange",
         navn: "Orange",
-        farve: "#f28c28"
+        farve: "#ff922f"
+    },
+
+
+    {
+        id: "lysbla",
+        navn: "Lys blå",
+        farve: "#64c9f2"
+    },
+
+
+    {
+        id: "morkbla",
+        navn: "Mørk blå",
+        farve: "#164f9b"
     }
 
 ];
 
 
 
-// =================================
+// =========================================
 // HTML-ELEMENTER
-// =================================
+// =========================================
 
 const forside =
     document.getElementById(
@@ -134,101 +176,130 @@ let timer;
 
 
 
-// =================================
-// TRYK PÅ GOLFBOLD
-// =================================
+// =========================================
+// GEM STATISTIK
+// =========================================
 
-const knapper =
+function gemStatistik() {
+
+    localStorage.setItem(
+
+        "golfStatistik",
+
+        JSON.stringify(
+            statistik
+        )
+
+    );
+
+}
+
+
+
+// =========================================
+// TRYK PÅ GOLFBOLD
+// =========================================
+
+const boldKnapper =
     document.querySelectorAll(
         ".bold-knap"
     );
 
 
-knapper.forEach(
+boldKnapper.forEach(
+
     function(knap) {
 
         knap.addEventListener(
+
             "click",
+
             function() {
+
 
                 const farve =
                     knap.dataset.color;
 
 
-                // Tilføj én sejr
+
+                // Læg én sejr til
 
                 statistik[farve]++;
 
 
 
-                // Gem statistikken
+                // Gem
 
-                localStorage.setItem(
-
-                    "golfStatistik",
-
-                    JSON.stringify(
-                        statistik
-                    )
-
-                );
+                gemStatistik();
 
 
 
                 // Vis statistik
-                // og automatisk retur
+                // med automatisk retur
 
                 visStatistik(true);
 
             }
+
         );
 
     }
+
 );
 
 
 
-// =================================
+// =========================================
 // STATISTIK-KNAP
-// =================================
+// =========================================
 
 statistikKnap.addEventListener(
+
     "click",
+
     function() {
 
-        // Manuel statistikside
-        // derfor ingen timer
+        // Manuel visning:
+        // ingen timer
 
         visStatistik(false);
 
     }
+
 );
 
 
 
-// =================================
+// =========================================
 // TILBAGE-KNAP
-// =================================
+// =========================================
 
 tilbageKnap.addEventListener(
+
     "click",
+
     function() {
 
         visForside();
 
     }
+
 );
 
 
 
-// =================================
+// =========================================
 // NULSTIL STATISTIK
-// =================================
+// =========================================
 
 nulstilKnap.addEventListener(
+
     "click",
+
     function() {
 
+
+        // Første godkendelse
 
         const førsteGodkendelse =
             confirm(
@@ -246,6 +317,8 @@ nulstilKnap.addEventListener(
 
 
 
+        // Anden godkendelse
+
         const andenGodkendelse =
             confirm(
 
@@ -262,30 +335,17 @@ nulstilKnap.addEventListener(
 
 
 
+        // Nulstil alle 10 farver
+
         statistik = {
 
-            hvid: 0,
-            sort: 0,
-            rod: 0,
-            gron: 0,
-            gul: 0,
-            lilla: 0,
-            pink: 0,
-            orange: 0
+            ...tomStatistik
 
         };
 
 
 
-        localStorage.setItem(
-
-            "golfStatistik",
-
-            JSON.stringify(
-                statistik
-            )
-
-        );
+        gemStatistik();
 
 
 
@@ -298,36 +358,38 @@ nulstilKnap.addEventListener(
         );
 
     }
+
 );
 
 
 
-// =================================
+// =========================================
 // RUNDER I ALT
-// =================================
+// =========================================
 
 function antalRunder() {
 
-    return (
+    return Object
+        .values(statistik)
+        .reduce(
 
-        statistik.hvid +
-        statistik.sort +
-        statistik.rod +
-        statistik.gron +
-        statistik.gul +
-        statistik.lilla +
-        statistik.pink +
-        statistik.orange
+            function(total, antal) {
 
-    );
+                return total + antal;
+
+            },
+
+            0
+
+        );
 
 }
 
 
 
-// =================================
+// =========================================
 // VIS STATISTIK
-// =================================
+// =========================================
 
 function visStatistik(
     automatiskTilbage
@@ -336,30 +398,36 @@ function visStatistik(
     clearTimeout(timer);
 
 
-    forside.classList.remove(
-        "aktiv"
-    );
+    forside
+        .classList
+        .remove("aktiv");
 
 
-    statistikSide.classList.add(
-        "aktiv"
-    );
+    statistikSide
+        .classList
+        .add("aktiv");
+
 
 
     lavDiagram();
 
 
 
-    // Efter tryk på en bold
+    // Hvis man lige har trykket
+    // på en golfbold
 
     if (automatiskTilbage) {
+
+
+        // Nulstil-knap må ikke vises
 
         nulstilKnap
             .classList
             .remove("vis");
 
 
-        // Automatisk retur
+
+        // Tilbage til forsiden
         // efter 7 sekunder
 
         timer =
@@ -379,9 +447,11 @@ function visStatistik(
 
 
 
-    // Manuel statistik-knap
+    // Hvis man selv trykker
+    // på Statistik-knappen
 
     else {
+
 
         nulstilKnap
             .classList
@@ -393,9 +463,9 @@ function visStatistik(
 
 
 
-// =================================
+// =========================================
 // VIS FORSIDE
-// =================================
+// =========================================
 
 function visForside() {
 
@@ -420,9 +490,9 @@ function visForside() {
 
 
 
-// =================================
-// LAV DIAGRAM
-// =================================
+// =========================================
+// LAV SØJLEDIAGRAM
+// =========================================
 
 function lavDiagram() {
 
@@ -450,17 +520,15 @@ function lavDiagram() {
 
 
 
+    // Find den farve,
+    // der har flest sejre
+
     const højeste =
         Math.max(
 
-            statistik.hvid,
-            statistik.sort,
-            statistik.rod,
-            statistik.gron,
-            statistik.gul,
-            statistik.lilla,
-            statistik.pink,
-            statistik.orange,
+            ...Object.values(
+                statistik
+            ),
 
             1
 
@@ -469,7 +537,9 @@ function lavDiagram() {
 
 
     farver.forEach(
+
         function(farve) {
+
 
             const antal =
                 statistik[
@@ -478,9 +548,9 @@ function lavDiagram() {
 
 
 
-            // -------------------------
-            // PROCENT AF ALLE RUNDER
-            // -------------------------
+            // =========================
+            // PROCENT
+            // =========================
 
             let procent = 0;
 
@@ -500,9 +570,9 @@ function lavDiagram() {
 
 
 
-            // -------------------------
+            // =========================
             // SØJLEHØJDE
-            // -------------------------
+            // =========================
 
             let søjleHøjde = 1;
 
@@ -519,9 +589,9 @@ function lavDiagram() {
 
 
 
-            // -------------------------
-            // OPRET SØJLE
-            // -------------------------
+            // =========================
+            // OPRET SØJLEN
+            // =========================
 
             const område =
                 document.createElement(
@@ -538,6 +608,7 @@ function lavDiagram() {
 
                 <div
                     class="lille-bold"
+
                     style="
                         background-color:
                         ${farve.farve};
@@ -546,14 +617,14 @@ function lavDiagram() {
                 </div>
 
 
+
                 <div class="antal">
                     ${antal}
                 </div>
 
 
-                <div
-                    class="sojle-holder"
-                >
+
+                <div class="sojle-holder">
 
                     <div
                         class="sojle"
@@ -571,9 +642,11 @@ function lavDiagram() {
                 </div>
 
 
+
                 <div class="navn">
                     ${farve.navn}
                 </div>
+
 
 
                 <div class="procent">
@@ -589,6 +662,7 @@ function lavDiagram() {
             );
 
         }
+
     );
 
 }
